@@ -32,7 +32,7 @@ st.write(
 
 # ===== 2. Performance Video =====
 st.header("Performance Video")
-video_path = "vods/demo/Demo.avi"
+video_path = "vods/demo/Demo.mp4"
 if os.path.exists(video_path):
     st.video(video_path)
 else:
