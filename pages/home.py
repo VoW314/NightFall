@@ -106,11 +106,14 @@ else:
 
 # ── Footer ────────────────────────────────────────────────────────────────────
 st.divider()
+st.write("For getting a version of the model: spartaiger314@gmail.com")
 st.markdown(
     "<div style='text-align: center; color: grey; font-size: 0.8em;'>"
     "Powered by <a href='https://openai.com' target='_blank' style='color: grey;'>OpenAI</a>"
     " &nbsp;|&nbsp; "
-    "Built by <a href='https://vow314.github.io' target='_blank' style='color: grey;'>Shreyas Bera</a>"
+    "Built by <a href='https://vow314.github.io' target='_blank' style='color: grey;'>Shreyas</a>"
+        " &nbsp;|&nbsp; "
+    "Request model file by emailing: spartaiger314@gmail.com</a>"
     "</div>",
     unsafe_allow_html=True,
 )
