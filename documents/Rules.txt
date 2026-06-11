@@ -1,0 +1,66 @@
+=== Where Winds Meet GvG Layout & Rules (Comprehensive) ===
+
+Title: Advanced 30v30 GvG Strategic Layout & Field Rules
+Purpose: To coordinate a 30-player guild roster into distinct operational units, maximizing map economy, managing lane pressure, and securing the main capture objective.
+Size: 30v30
+
+=========================================
+1. PRIMARY & SECONDARY OBJECTIVES
+=========================================
+
+Main Objective:
+  Shatter the enemy's structural defenses (Outer and Inner Towers), breach their main headquarters, defeat the enemy faction boss (the Goose), and successfully execute an organized carrier escort to bring the Fortune Tree/Flag completely back to our home base line.
+
+Sub-Objectives (Map Economy & Buff Control):
+  * The Jungle & Camp Farming: Clearing active neutral monster camps across the wilderness sectors to harvest "Fun Coins" (WWM Jungle Money).
+  * World Boss Contested Hunts: High-health neutral bosses that drop massive team-wide combat buffs (such as flat damage increases, health regeneration, or cooldown reduction) when secured.
+  * Neutral Capture Points (Altars/Shrines): Capturing and holding small static positions on the map that grant passive Fun Coin generation over time or unlock fast-travel/respawn forward tents.
+  * Defensive Outposts: Fortified choke points that slow down the enemy's main ball. They must be defended or sieged using specialized tactical purchases.
+
+=========================================
+2. THE TACTICAL ECONOMY (FUN COINS)
+=========================================
+* Accumulation: Fun Coins are gathered primarily by Flex teams clearing camps, defeating World Bosses, or maintaining control of economic capture points.
+* Expenditure: Coins are spent dynamically by the Shotcaller/Commander to deploy:
+  - Battleground Siege Weapons: Launching battering rams or ballistas to break enemy towers faster.
+  - Commander Board Skills: Battlefield-wide tactical abilities like mass heals, stealth detection radars, or temporary defense fortifications.
+
+=========================================
+3. ROSTER DIVISION & EXPECTED OUTCOMES
+=========================================
+
+--- Flex #1 (Roaming, Economy, & Skirmishing) ---
+* Size: 5-8 Players (High mobility, strong 1v1/small-scale duelists, assassins)
+* Core Role: Active Map Control & Jungle Dominance.
+* Strategic Focus:
+  - Rapidly clear jungle creeps to pool Fun Coins into the guild bank.
+  - Constantly scout and contest neutral World Bosses before the enemy can anchor them.
+  - Execute sudden flanking maneuvers onto the enemy Main Ball's backline squishies (healers/ranged DPS).
+  - Apply split-push pressure on side lanes to force the enemy to break up their main force.
+* Expected Outcome: Out-farming the enemy economy, securing a majority of team buffs, and disrupting enemy rotations.
+
+--- Flex #2 (Defensive Anchor & Scouting) ---
+* Size: 4-6 Players (High survivability, heavy crowd control, durable builds)
+* Core Role: Base Defense, Choke Point Retention, and Tactical Intel.
+* Strategic Focus:
+  - Maintain an absolute lock on our home base perimeter and protect our Goose from stealth or backend split-pushers.
+  - Anchor the main defensive lane/tower line, using heavy crowd control to stall out massive enemy pushes.
+  - Act as the "eyes of the map." Since they sit in a stable defensive position, they track enemy movements across lane boundaries and relay scouting calls to Flex #1 for targeted counter-attacks.
+* Expected Outcome: Preventing backdoor losses, minimizing tower structural damage, and giving the team map-wide vision.
+
+--- Main Ball (Core Offensive Force) ---
+* Size: 15-20 Players (Standard frontline tanks, heavy AoE DPS, dedicated group healers)
+* Core Role: Main Lane Push, Forced Group Engagements, and Structural Siege.
+* Strategic Focus:
+  - Group tightly in the primary conflict lane to clash directly with the enemy's main force.
+  - Protect and advance alongside deployed siege weapons to systematically smash down enemy outposts and towers.
+  - Push inside the enemy base once structures fall to burn down the enemy faction boss (the Goose).
+* Expected Outcome: Forcing the enemy into unfavorable large-scale team fights, shattering their structural defenses, and clearing a path to the final boss.
+
+--- Carrier Group (Sub-Unit Inside Main Ball) ---
+* Size: 3-5 Specific Players (Ultra-tanky characters, high movement speed, invulnerability/shield skills)
+* Core Role: Flag Capture & End-Game Escort.
+* Strategic Focus:
+  - The moment the enemy Goose falls, a designated runner immediately claims the Fortune Tree/Flag.
+  - The surrounding escort group burns heavy defensive resources—such as Nameless Sword shield walls to block incoming projectiles, or Lion's Roar silences to disrupt enemy crowd control—to build a protective bubble around the flag bearer.
+* Expected Outcome: Safely escorting the Fortune Tree/Flag through high-pressure choke points and back across the map to secure the final match victory.
