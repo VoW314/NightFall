@@ -32,11 +32,12 @@ st.write(
 
 # ===== 2. Performance Video =====
 st.header("Performance Video")
+st.write("Video Link: https://youtu.be/MtBDzws_1Ko")
 video_path = "vods/demo/Demo.mp4"
 if os.path.exists(video_path):
     st.video(video_path)
 else:
-    st.error(f"Video file not found at: {video_path}")
+    st.error(f"Video file not found at: {video_path}\n Please use the video link above!")
 
 # ===== 3. CSV Stats =====
 st.header("Post-Game Statistics")
