@@ -8,3 +8,4 @@ __pycache__/
 .env
 vods/demo/Demo.mp4
 vods/demo/Demo.avi
+*.mp4
