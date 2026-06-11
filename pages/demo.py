@@ -25,7 +25,7 @@ VECTOR_STORE_ID = load_config().get("vector_store_id", "")
 # ===== 1. Summary =====
 st.header("Project Summary")
 st.write(
-    "Integration of YOLOv8 results with CSV player statistics. This demo showcases the potential "
+    "Integration of YOLOv11 results with CSV player statistics. This demo showcases the potential "
     "of combining video analysis with CSV data. Since this is only a demo, the CSV data is not "
     "related to the video and is only meant to show that download is possible."
 )
