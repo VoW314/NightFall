@@ -20,10 +20,11 @@ Sub-Objectives (Map Economy & Buff Control):
 =========================================
 2. THE TACTICAL ECONOMY (FUN COINS)
 =========================================
-* Accumulation: Fun Coins are gathered primarily by Flex teams clearing camps, defeating World Bosses, or maintaining control of economic capture points.
+* Teams start with 0 fun coins at start of game. 
+* Accumulation: Fun Coins are gathered primarily by Flex teams clearing camps, defeating World Bosses, or keeping your defensive positions alive. Once a defensive position is destroyed, there are no more passive fun coins
 * Expenditure: Coins are spent dynamically by the Shotcaller/Commander to deploy:
-  - Battleground Siege Weapons: Launching battering rams or ballistas to break enemy towers faster.
-  - Commander Board Skills: Battlefield-wide tactical abilities like mass heals, stealth detection radars, or temporary defense fortifications.
+  - Battleground Commander Weapons: Boom chickens can be used to defeat jungle enemies. Horskies can be used as a temporary quick mount. Ballista bolts to have one way teleports anywhere on the field. 
+  - Commander Board Skills: Battlefield-wide tactical abilities such as enemy healing reductions, allied respawn increases, and fortification invlunerability.
 
 =========================================
 3. ROSTER DIVISION & EXPECTED OUTCOMES
@@ -64,3 +65,44 @@ Sub-Objectives (Map Economy & Buff Control):
   - The moment the enemy Goose falls, a designated runner immediately claims the Fortune Tree/Flag.
   - The surrounding escort group burns heavy defensive resources—such as Nameless Sword shield walls to block incoming projectiles, or Lion's Roar silences to disrupt enemy crowd control—to build a protective bubble around the flag bearer.
 * Expected Outcome: Safely escorting the Fortune Tree/Flag through high-pressure choke points and back across the map to secure the final match victory.
+
+=========================================
+4. SKILLS, BUFFS, & PURCHASABLES
+=========================================
+
+--- Tactical Purchasables (Fun Coin Economy) ---
+*   Ballista Bolts
+    - Cost: 5,000 Fun Coins (Pack of 12)
+    - Strategic Use: High-velocity projectiles used to traverse and fly around the map rapidly, giving teams immense rotational speed and map-wide presence.
+*   Horskies
+    - Cost: 500 Fun Coins
+    - Strategic Use: Deployed as temporary ground mounts to quickly push down a lane. Best used to disorient the enemy during skirmishes and maneuver swiftly across ground objectives.
+*   Boom Chickens
+    - Cost: 200 Fun Coins per chicken
+    - Strategic Use: High-impact explosive assets best used for engaging dense enemy clusters of larger than 8 players, particularly when contesting the neutral World Boss or clearing large jungle sectors.
+
+--- Commander Board Skills & Strategic Buffs ---
+*   Morale Buff
+    - Mechanics: Upgrades up to 8 distinct levels. Each incremental level requires a Fun Coin investment and triggers a cooldown of a few minutes.
+    - Expected Outcome: Provides a stacking 5% damage and defense increase to all players per level, culminating in a massive 40% stat amplification once all 8 levels are achieved.
+*   Hair Pulling
+    - Mechanics: Boosts the entire team’s damage profile against the enemy faction boss (the Goose) by 100% for a brief 10-second window.
+    - Expected Outcome: The designated burst window for the Main Ball. Shotcallers must coordinate and time high-damage weapon EX skills to land precisely during this active duration.
+*   Sprint & Relentless Advance Combo
+    - Mechanics: Sprint increases the Fortune Tree Carrier’s movement speed by 100% for 10 seconds. Relentless Advance grants the carrier interception immunity for 5 seconds.
+    - Expected Outcome: The primary escape engine for the Carrier Group. Activating this combo allows the flag bearer to completely ignore enemy crowd control and break out of the high-pressure enemy base, making lane transit much easier once clear.
+*   Last Stand
+    - Mechanics: Dynamically reduces the team's respawn timers by 30% for 1 minute. If the guild falls behind by two or more towers, the recovery reduction automatically scales up to 60%.
+    - Expected Outcome: A critical late-game stabilization mechanic used to mitigate long respawn penalties, prevent total map wipes, and sustain defensive lines under heavy siege.
+*   Bounty Strike
+    - Mechanics: Amplifies your team's direct damage output against the enemy Fortune Tree Carrier by 40% for 10 seconds.
+    - Expected Outcome: The primary shutdown tool for defensive units. Flex teams or defensive anchors activate this to melt the enemy flag bearer and stall out their extraction.
+*   You Got a Problem?
+    - Mechanics: Increases the entire team’s overall structural damage against enemy towers by 100% for 10 seconds.
+    - Expected Outcome: Used exclusively during coordinated siege pushes when the Main Ball is fully grouped, stacked with siege weapons, and ready to focus fire down a tower.
+*   City Protection
+    - Mechanics: Creates an absolute defensive barrier, preventing 100% of incoming damage to your guild's towers and Goose for 20 seconds.
+    - Expected Outcome: A powerful defensive panic-button used to completely nullify a heavily committed offensive push from the enemy Main Ball.
+*   Refight
+    - Mechanics: A high-cost, premium skill that instantly slashes remaining weapon EX skill cooldowns by 50% while amplifying overall damage and healing outputs by 10% for 30 seconds.
+    - Expected Outcome: The ultimate game-defining utility. Reserved strictly for decisive, large-scale team fights where a synchronized second wave of EX skills can completely turn the tide of battle.

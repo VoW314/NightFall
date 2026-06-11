@@ -1,0 +1,45 @@
+This document highlights some strategies for team composition. 
+
+
+
+===============
+Weapons and Roster Points to Consider
+================
+
+GvG rewards teams that coordinate positioning, weapon selection, and role assignments.
+Tanks and healers should be clearly marked so teammates can locate them during chaotic fights.
+Area-of-effect Mystic skills deal massive damage when enemies cluster around objectives. 
+The Nameless Sword’s Chi waves are particularly effective for hitting both players and structures.
+
+Smaller guilds should avoid splitting their forces across multiple towers. Focus on the middle tower, 
+then advance as a group to the goose. Larger guilds can divide into multiple squads to pressure different 
+lanes and secure neutral mobs simultaneously. Smaller guilds typically have roughtly 
+20 players or less in their entire matches. 
+
+Respawn times increase as the match progresses, making deaths more costly in the 
+final minutes. Avoid overextending without support, and use the Last Stand commander skill to keep your 
+team in the fight during critical moments.
+
+
+============
+Skills to Consider
+============
+
+In the current GVG meta, Crowd Control (CC) and survivability are king. 
+The absolute best Mystic Skill you can bring is Lion’s Roar (The Bell).
+It provides damage reduction and “Tenacity” (anti-stagger) to the user, but more importantly,
+it silences enemies in a large area. A silenced enemy cannot use skills or escape, making them an 
+easy target for your team to wipe out. This is best used when there are at least 3 to 5 players on screen. 
+
+
+=========
+Other Considerations
+=========
+
+If there are not many enemies on screen, it may be good to attempt one of 2 things:
+1) Attempt to clear the jungle for more fun coins and economy bonuses
+2) Attempt to take a half-way respawn camp. These respawn camps allow players to be able to respawn within the battlefield instead
+of at the original spawn point. 
+
+
+These both take considerable time to achieve, but are very high reward if done effectively. 
