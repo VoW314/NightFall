@@ -50,7 +50,7 @@ with col_a:
 with col_b:
     st.markdown("### 2 — Detect")
     st.write(
-        "A custom **YOLOv11** model — trained locally on 3,000 labelled images — processes "
+        "A custom **YOLOv11** model — trained locally on 6,200 labelled images — processes "
         "the footage frame by frame, tracking players, towers, and objectives. Detection "
         "statistics are compiled into a structured match report."
     )
