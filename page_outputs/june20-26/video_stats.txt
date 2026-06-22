@@ -1,0 +1,26 @@
+=== Nightfall Detection Stats ===
+
+Video           : WWM6--21.mp4
+Frames processed: 110574
+Video length    : 30m 42.9s  (1842.9 seconds)
+FPS             : 60.00
+
+--- Players ---
+  Total unique players across VOD : 4867
+  Peak simultaneous on screen     : 9
+  Total frame appearances         : 148501
+  Avg unique visible per second   : 2.64
+
+--- Geese ---
+  Total unique geese across VOD   : 3
+  Peak simultaneous on screen     : 1
+  Total frame appearances         : 24
+  Avg unique visible per second   : 0.00
+
+--- Towers ---
+  Total unique towers across VOD  : 169
+  Peak simultaneous on screen     : 3
+  Total frame appearances         : 9094
+  Avg unique visible per second   : 0.09
+
+Per-frame breakdown: D:\Nightfall\finals\league6-21\detections.csv

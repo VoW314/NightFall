@@ -1,19 +1,18 @@
 """
 utils/vector_store_manager.py
 ------------------------------
-Manages the lifecycle of the OpenAI Vector Store for NightFall.
+Per-page vector store management.
 
-How change detection works:
-  1. compute_docs_hash() hashes every file in documents/ by name + content.
-  2. ensure_vector_store() compares that hash to the one stored in
-     vector_store_config.json from the last successful build.
-  3. If the hash matches → return the existing vector store ID immediately (no API calls).
-  4. If the hash differs (new file, edited file, deleted file) → _build_vector_store()
-     uploads everything and creates a fresh store, then saves the new hash.
+Each page (demo, each league match) gets its own isolated vector store built
+from its own source folder.  Stores are identified by a unique store_name and
+rebuilt only when the contents of their source folder change.
 
-_build_vector_store is decorated with @st.cache_resource and keyed on
-(api_key, docs_hash), so within a single running Streamlit process it only
-executes once per unique document state — even if home.py reruns.
+Config is persisted to vector_store_config.json as a dict keyed by store_name:
+    {
+      "demo":           {"vector_store_id": "vs_xxx", "docs_hash": "abc..."},
+      "league-june21-26": {"vector_store_id": "vs_yyy", "docs_hash": "def..."},
+      ...
+    }
 """
 
 import hashlib
@@ -22,96 +21,97 @@ from pathlib import Path
 from openai import OpenAI
 import streamlit as st
 
-DOCS_DIR = Path("documents")
 CONFIG_PATH = Path("vector_store_config.json")
-VECTOR_STORE_NAME = "Nightfall Ruleset"
 SUPPORTED_EXTENSIONS = {".txt", ".md", ".pdf"}
 
 
-def compute_docs_hash() -> str:
-    """SHA-256 fingerprint of all documents — changes whenever any file is added, edited, or removed."""
+def compute_docs_hash(docs_dir: str | Path) -> str:
+    """SHA-256 fingerprint of all supported files in docs_dir. Returns '' if empty/missing."""
+    path = Path(docs_dir)
+    if not path.exists():
+        return ""
     files = sorted(
-        f for f in DOCS_DIR.iterdir()
+        f for f in path.iterdir()
         if f.is_file() and f.suffix.lower() in SUPPORTED_EXTENSIONS
     )
+    if not files:
+        return ""
     h = hashlib.sha256()
     for f in files:
-        h.update(f.name.encode())   # catches renames
-        h.update(f.read_bytes())    # catches content edits
+        h.update(f.name.encode())
+        h.update(f.read_bytes())
     return h.hexdigest()
 
 
 def load_config() -> dict:
-    """Read the persisted vector store config, or return empty dict if it doesn't exist."""
     if CONFIG_PATH.exists():
         return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     return {}
 
 
-def _save_config(vector_store_id: str, docs_hash: str) -> None:
-    CONFIG_PATH.write_text(
-        json.dumps({"vector_store_id": vector_store_id, "docs_hash": docs_hash}, indent=2),
-        encoding="utf-8",
-    )
+def _save_page_config(store_name: str, vector_store_id: str, docs_hash: str) -> None:
+    config = load_config()
+    config[store_name] = {"vector_store_id": vector_store_id, "docs_hash": docs_hash}
+    CONFIG_PATH.write_text(json.dumps(config, indent=2), encoding="utf-8")
 
 
 @st.cache_resource
-def _build_vector_store(api_key: str, docs_hash: str) -> str:
+def _build_vector_store(api_key: str, store_name: str, docs_hash: str, docs_dir: str) -> str:
     """
-    Upload every document in DOCS_DIR and create a fresh Vector Store.
+    Upload every supported file in docs_dir and create a new Vector Store.
 
-    Keyed on docs_hash so the cache busts automatically when documents change.
-    Within one server process this is only called once per unique doc state.
+    Keyed on (api_key, store_name, docs_hash) so the cache busts only when that
+    page's documents actually change.  Within one server process this runs at
+    most once per unique (page, document-state) combination.
     """
     client = OpenAI(api_key=api_key)
 
     doc_files = sorted(
-        f for f in DOCS_DIR.iterdir()
+        f for f in Path(docs_dir).iterdir()
         if f.is_file() and f.suffix.lower() in SUPPORTED_EXTENSIONS
     )
 
-    # Upload each file individually; collect the file IDs for batch linking below.
     file_ids: list[str] = []
     for doc in doc_files:
         with open(doc, "rb") as fh:
             uploaded = client.files.create(file=fh, purpose="assistants")
         file_ids.append(uploaded.id)
 
-    # Create the vector store container.
-    vector_store = client.vector_stores.create(name=VECTOR_STORE_NAME)
+    vs_name = f"Nightfall — {store_name}"
+    vector_store = client.vector_stores.create(name=vs_name)
 
-    # create_and_poll sends all file IDs in one request and blocks until OpenAI
-    # has finished chunking and indexing every document — the store is fully
-    # queryable by the time this call returns.
+    # create_and_poll links all files in one batch and blocks until every
+    # document has been chunked and indexed — the store is query-ready on return.
     client.vector_stores.file_batches.create_and_poll(
         vector_store_id=vector_store.id,
         file_ids=file_ids,
     )
 
-    _save_config(vector_store.id, docs_hash)
+    _save_page_config(store_name, vector_store.id, docs_hash)
     return vector_store.id
 
 
-def ensure_vector_store(api_key: str) -> tuple[str, bool]:
+def ensure_page_vector_store(
+    api_key: str,
+    store_name: str,
+    docs_dir: str | Path,
+) -> tuple[str | None, bool]:
     """
-    Return (vector_store_id, was_rebuilt).
+    Return (vector_store_id, was_rebuilt) for a specific page.
 
-    Rebuilds the store only when the documents fingerprint has changed since the
-    last successful build.  Fast no-op on every run where nothing has changed.
+    Returns (None, False) when docs_dir is empty or missing — callers should
+    skip file_search in that case and show an appropriate message.
     """
-    if not DOCS_DIR.exists() or not any(
-        f for f in DOCS_DIR.iterdir()
-        if f.is_file() and f.suffix.lower() in SUPPORTED_EXTENSIONS
-    ):
-        raise FileNotFoundError(f"No supported documents found in '{DOCS_DIR}/'.")
+    current_hash = compute_docs_hash(docs_dir)
 
-    current_hash = compute_docs_hash()
+    if not current_hash:
+        return None, False
+
     config = load_config()
+    page_cfg = config.get(store_name, {})
 
-    # Hash matches and we have a stored ID → nothing to do.
-    if config.get("docs_hash") == current_hash and config.get("vector_store_id"):
-        return config["vector_store_id"], False
+    if page_cfg.get("docs_hash") == current_hash and page_cfg.get("vector_store_id"):
+        return page_cfg["vector_store_id"], False
 
-    # Hash changed (or first run) → build a new store.
-    vs_id = _build_vector_store(api_key, current_hash)
+    vs_id = _build_vector_store(api_key, store_name, current_hash, str(docs_dir))
     return vs_id, True

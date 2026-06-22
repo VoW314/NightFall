@@ -1,0 +1,45 @@
+This file explains how to understand the outputs of
+"post_game.txt" and "video_stats.txt"
+
+Our team is named Seraph. All are from the seraph perspective.
+
+
+POST_GAME:
+These statistics are from the match's post game statistics
+
+KDR - refers to the kill death ratio of this player 
+Dmg/Kill - to be used to properly see the amount of damage a player would do per kill. A 
+significantly smaller number could indicate that this player in the row is getting the final hit,
+while larger numbers could signify that this player does major damage to each enemy but doesn't land the killing
+blow. 
+
+Tank - The total amount of damage taken. 
+
+Heal - When the number is above at least 2,000,000 then this indicates this player was a healer. 
+
+Siege Damage - The total amount of damage done to bullwarks/towers
+
+Deaths/Tank - The total number of damage tanked divided by deaths. A higher number indicates
+that players were being healed lots before any death by our healers. 
+
+Team Summary - Tells a summary of information for the entire team
+
+Outcome - Explains who won the match. This will give enemy team and Seraph statistics. Seraph is our team. All coaching should be given towards Seraph. 
+
+Enemy Tree moved - If this number is higher than Seraph's this likely indicates Seraph lost the match. 
+Goose Health: The amount of health the goose had left by the end of the match. If this is above 0%, then it indicates that the team's defensive group was able 
+to hold back any offensive enemy. 
+
+Bulwarks remaining- The number of towers remaining. Towers remaining correlates with fun coins and towers will passively give teams fun coins. 
+
+Kills - Total team kills. When the number of enemy kills > allied kills, this could indicte a lack healers. If Seraph has more kills than the enemy, but still looses, this likely means there was a lack of tactical cohesion and rotation speed. 
+
+Fun Coins - The number of fun coins achieved from keeping bulwarks alive as well as groups being able to kill jungle creeps/camps. 
+
+
+VIDEO_STATS: 
+The video stats tells us the information in the video object detection. 
+
+Many players on screen indicates that teams were fighting large groups. Average unique visible per second gives an average of the number of unique players on screen at a given time. 
+
+Typically the player should only see 1 goose and 1 tower on screen at any time. Any more is likely a CV issue for that class. 

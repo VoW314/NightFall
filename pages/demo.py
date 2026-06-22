@@ -1,8 +1,13 @@
 import os
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 from openai import OpenAI
-from utils.vector_store_manager import load_config
+from utils.vector_store_manager import ensure_page_vector_store
+
+STORE_NAME  = "demo"
+DOCS_DIR    = Path("page_outputs/demo")       # demo_stats.txt lives here
+SESSION_KEY = f"vs_{STORE_NAME}"
 
 
 def _get_secret(key: str, default: str = "") -> str:
@@ -15,12 +20,6 @@ def _get_secret(key: str, default: str = "") -> str:
 st.title("Demo Analysis")
 
 OPENAI_API_KEY = _get_secret("OPENAI_API_KEY")
-
-# Vector store ID is managed automatically by the home page on every session.
-# Reading it from the config file means demo.py always uses whatever store
-# was built most recently (home.py rebuilds it when documents change).
-VECTOR_STORE_ID = load_config().get("vector_store_id", "")
-
 
 # ===== 1. Summary =====
 st.header("Project Summary")
@@ -47,43 +46,65 @@ else:
     st.warning("CSV file not found.")
 
 # ===== 4. AI Coach Analysis =====
+st.divider()
 st.header("AI Coach Analysis")
-
-STATS_PATH = "page_outputs/demo/demo_stats.txt"
 
 if not OPENAI_API_KEY:
     st.warning("OpenAI API key not configured. Add `OPENAI_API_KEY` to `.streamlit/secrets.toml`.")
     st.stop()
 
-if not VECTOR_STORE_ID:
-    st.info(
-        "The Nightfall Ruleset hasn't been indexed yet.  "
-        "Please visit the **Home** page first — it will set up the vector store automatically."
-    )
+# -- Vector store blurb --
+st.info(
+    "**About the Vector Store**\n\n"
+    "The Coach AI indexes the stats files in `page_outputs/demo/` into a private Vector Store "
+    "so it can search and reference specific data when forming its analysis. "
+    "The store is checked once per session — **subsequent interactions on this page are instant**."
+)
+
+# -- Session-cached check: only runs the hash comparison + possible rebuild once per session --
+if SESSION_KEY not in st.session_state:
+    with st.spinner("Checking vector store — this is fast if nothing changed..."):
+        vs_id, was_rebuilt = ensure_page_vector_store(OPENAI_API_KEY, STORE_NAME, DOCS_DIR)
+    st.session_state[SESSION_KEY] = {"vs_id": vs_id, "rebuilt": was_rebuilt}
+
+cached  = st.session_state[SESSION_KEY]
+vs_id   = cached["vs_id"]
+
+if vs_id is None:
+    st.warning("No context documents found in `page_outputs/demo/`. Add `.txt` files there to enable the Coach AI.")
     st.stop()
 
-if not os.path.exists(STATS_PATH):
-    st.warning(f"Stats file not found at: `{STATS_PATH}`")
-    st.stop()
+if cached["rebuilt"]:
+    st.success("Vector store rebuilt with updated documents — ready.")
+else:
+    st.success("Vector store is up to date — ready.")
 
-with st.expander("Detection stats that will be analysed"):
-    st.code(open(STATS_PATH).read(), language="text")
+# -- Stats preview --
+stats_files = sorted(DOCS_DIR.glob("*.txt"))
+if stats_files:
+    with st.expander("Files in this page's vector store"):
+        for f in stats_files:
+            st.markdown(f"**{f.name}**")
+            st.code(f.read_text(), language="text")
 
+# -- Generate --
 if st.button("Generate Coach Analysis"):
-    stats_text = open(STATS_PATH).read()
+    # Concatenate all txt files in DOCS_DIR as the direct context for the model.
+    stats_text = "\n\n".join(
+        f"=== {f.name} ===\n{f.read_text()}"
+        for f in sorted(DOCS_DIR.glob("*.txt"))
+    )
 
-    with st.spinner("Analysing performance against the Nightfall Ruleset..."):
+    with st.spinner("Analysing performance..."):
         client = OpenAI(api_key=OPENAI_API_KEY)
 
-        # Responses API with file_search: the model retrieves relevant
-        # passages from the vector store and weaves them into its analysis.
         response = client.responses.create(
             model="gpt-4o",
             instructions=(
                 "You are an expert GvG (Guild vs Guild) coach for the game Where Winds Meet. "
                 "Your job is to analyse detection statistics from a match recording and give "
                 "specific, actionable coaching feedback to the team. "
-                "Use the Nightfall Ruleset documents to ground your feedback in the team's "
+                "Use the documents in the vector store to ground your feedback in the team's "
                 "actual strategy and role assignments. "
                 "Structure your response with clear sections: Overall Assessment, "
                 "What Went Well, Areas to Improve, and Tactical Recommendations."
@@ -91,12 +112,9 @@ if st.button("Generate Coach Analysis"):
             input=(
                 f"Here are the automated detection stats from our latest GvG session:\n\n"
                 f"{stats_text}\n\n"
-                "Please analyse our performance and provide coaching feedback based on the Nightfall Ruleset."
+                "Please analyse our performance and provide coaching feedback."
             ),
-            tools=[{
-                "type": "file_search",
-                "vector_store_ids": [VECTOR_STORE_ID],
-            }],
+            tools=[{"type": "file_search", "vector_store_ids": [vs_id]}],
         )
 
     st.success("Analysis complete!")

@@ -1,12 +1,4 @@
 import streamlit as st
-from utils.vector_store_manager import ensure_vector_store
-
-
-def _get_secret(key: str, default: str = "") -> str:
-    try:
-        return st.secrets[key]
-    except (KeyError, FileNotFoundError):
-        return default
 
 
 # ── Header ────────────────────────────────────────────────────────────────────
@@ -80,29 +72,6 @@ st.markdown(
 )
 
 st.divider()
-
-# ── Ruleset Sync ──────────────────────────────────────────────────────────────
-st.header("Ruleset Status")
-st.write("Please wait for the Ruleset to be synced before using the Coach AI on the Demo page.")
-
-OPENAI_API_KEY = _get_secret("OPENAI_API_KEY")
-
-if not OPENAI_API_KEY:
-    st.warning("OpenAI API key not configured. Add `OPENAI_API_KEY` to `.streamlit/secrets.toml`.")
-else:
-    try:
-        with st.spinner("Checking ruleset documents for updates..."):
-            vs_id, was_rebuilt = ensure_vector_store(OPENAI_API_KEY)
-
-        if was_rebuilt:
-            st.success("Ruleset updated — vector store rebuilt and ready.")
-        else:
-            st.success("Ruleset is current. No changes detected.")
-
-    except FileNotFoundError as e:
-        st.warning(str(e))
-    except Exception as e:
-        st.error(f"Ruleset sync failed: {e}")
 
 # ── Footer ────────────────────────────────────────────────────────────────────
 st.divider()
