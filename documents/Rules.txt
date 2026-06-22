@@ -38,7 +38,7 @@ Sub-Objectives (Map Economy & Buff Control):
   - Constantly scout and contest neutral World Bosses before the enemy can anchor them.
   - Execute sudden flanking maneuvers onto the enemy Main Ball's backline squishies (healers/ranged DPS).
   - Apply split-push pressure on side lanes to force the enemy to break up their main force.
-* Expected Outcome: Out-farming the enemy economy, securing a majority of team buffs, and disrupting enemy rotations.
+* Expected Outcome: Out-farming the enemy economy and disrupting enemy rotations.
 
 --- Flex #2 (Defensive Anchor & Scouting) ---
 * Size: 4-6 Players (High survivability, heavy crowd control, durable builds)

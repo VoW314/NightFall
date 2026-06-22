@@ -26,7 +26,7 @@ MATCHES = [
         "result": "Seraph Lost",
         "result_color": "red",
         "csv": "data/june21-26.csv",
-        "video": None,                  # set to a YouTube URL when available
+        "video": "https://www.youtube.com/watch?v=LX_Wfi0nnos",
         "stats": "page_outputs/league/june21-26_stats.txt",   # add when available
     },
 ]
