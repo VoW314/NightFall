@@ -22,6 +22,11 @@ Siege Damage - The total amount of damage done to bullwarks/towers
 Deaths/Tank - The total number of damage tanked divided by deaths. A higher number indicates
 that players were being healed lots before any death by our healers. 
 
+Class - DPS is our main damage dealers. DPS players typically work on dealing the most damage to enemy clumps and clusters. 
+TANK - Work on clustering enemies and doing large amounts of Area of Effect damage. CARRIER is the tree carrier. This person is who we use to escort the enemies tree back to our base. They will typically take lots of damage as enemies focus towards them. 
+HEAL - Healers work on healing all allied units. When healers take lots of damage, it indicates that DPS and TANK players are not doing enough to look around and defend. Death of healers can also indicate that there are more enemies than allies in the match.
+Healers are typically never at fault for how important they are. If many allied players are dying or if average team deaths are considerably high, then **this indicates that there are not enough healers on the current roster**
+
 Team Summary - Tells a summary of information for the entire team
 
 Outcome - Explains who won the match. This will give enemy team and Seraph statistics. Seraph is our team. All coaching should be given towards Seraph. 
