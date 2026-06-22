@@ -9,13 +9,13 @@ Size: 30v30
 =========================================
 
 Main Objective:
-  Shatter the enemy's structural defenses (Outer and Inner Towers), breach their main headquarters, defeat the enemy faction boss (the Goose), and successfully execute an organized carrier escort to bring the Fortune Tree/Flag completely back to our home base line.
+  Shatter the enemy's structural defenses (Bulwarks), breach their main headquarters, defeat the enemy faction boss (the Goose), and successfully execute an organized carrier escort to bring the Fortune Tree/Flag completely back to our home base line.
 
 Sub-Objectives (Map Economy & Buff Control):
   * The Jungle & Camp Farming: Clearing active neutral monster camps across the wilderness sectors to harvest "Fun Coins" (WWM Jungle Money).
   * World Boss Contested Hunts: High-health neutral bosses that drop massive team-wide combat buffs (such as flat damage increases, health regeneration, or cooldown reduction) when secured.
-  * Neutral Capture Points (Altars/Shrines): Capturing and holding small static positions on the map that grant passive Fun Coin generation over time or unlock fast-travel/respawn forward tents.
-  * Defensive Outposts: Fortified choke points that slow down the enemy's main ball. They must be defended or sieged using specialized tactical purchases.
+  * Neutral Capture Points (Mid-way camps): Capturing and holding these camps will let players be able to rotate even faster between objectives. 
+  * Bulwarks: Fortified choke points that slow down the enemy's main ball. When all 3 of these are still alive, the goose is not attackable. Every bullwark destroyed debuffs the goose's defenses. Bulwarks also give passive fun coins to allied teams. 
 
 =========================================
 2. THE TACTICAL ECONOMY (FUN COINS)
